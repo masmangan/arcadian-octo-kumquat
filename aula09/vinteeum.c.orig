@@ -1,0 +1,53 @@
+// PUCRS/FACIN
+// Laboratório de Programação I
+// marco.mangan@pucrs.br
+// davi.farias@acad.pucrs.br
+//francine.monteiro@acad.pucrs.br
+//douglas.carvalho.01@acad.pucrs.br
+//enrique.martinez@acad.pucrs.br
+// Jogo de Vinte e Um
+// https://pt.wikipedia.org/wiki/Blackjack
+
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+int main()
+{
+int n1,n2,v1,v2,r1,r2;
+	printf("Jogo de Vinte e Um, (c) 2015\n");
+	printf("============================\n");
+		srand(time(NULL));
+		
+	printf ("Jogador 1.\n");
+	printf("carta 1.\n");
+	v1 = rand() % 13 + 1;
+	printf("%d\n", v1);
+	 printf ("carta 2.\n");
+        v2 = rand() % 13 + 1;
+        printf("%d\n", v2);
+	printf("Total Jogador 1\n");
+	r1 = v1 + v2;
+	printf("%d\n", r1);
+	
+	printf ("Mesa.\n\n");
+	 printf("carta 1.\n");
+        n1 = rand() % 13 + 1;
+        printf("%d\n", n1);
+         printf ("carta 2.\n");
+        n2 = rand() % 13 + 1;
+	printf("%d\n", n2);
+	printf("Total Mesa\n");
+	r2 = n1 + n2;
+	printf("%d\n", r2);
+
+	if(r1 <= 21 && r2 <= 21 ){
+	if(r1 > r2){
+	printf("Jogador 1 Venceu\n");
+	} else{
+	printf("Mesa Venceu\n");
+	}
+        }
+
+	printf("*FIM*\n");
+	return 0;
+}
