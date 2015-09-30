@@ -1,0 +1,59 @@
+/*
+ PUCRS/FACIN
+ Laboratório de Programação I
+
+ marco.mangan@pucrs.br
+ 
+ Resolução do Exercício 3.36, página 76, do livro Deitel e Deitel, 2011.
+
+ Imprimindo o equivalente decimal de um número binário.
+
+ Leia um inteiro contendo apenas 0s e 1s (ou seja, um inteiro " binário") e imprima seu equivalente decimal. 
+[Dica: use os operadores de módulo e divisão para apanhar os dígitos do número "binário" um de cada vez, da direita para esquerda. Assim como no sistema numérico decimal, em que o dígito mais à direita tem um valor posicional de 1, e o dígito à esquerda tem um valor posicional de 10, depois 100, depois 1.000, e assim por diante, no sistema binário, o dígito mais à direita tem um valor posicional de 1, e o próximo dígito à esquerda tem um valor posicional de 2, depois de 4, depois de 8 e assim por diante.
+Assim o número 234 pode ser interpretado como  4 * 1 + 3 * 10 + 2 * 100. O equivalente decimal do binário 1101 é 1 * 1 + 0 * 2  + 1 * 4 + 1 * 8 ou 1 + 0 + 4 + 8 ou 13.]
+*/
+#include <stdio.h>
+
+int main()
+{
+	int bin, dec;
+
+	int r;
+	int d, p;
+
+	printf("Exercício 3.36. página 76, Deitel e Deitel, 2011.\n");
+
+	printf("Informe o valor do número binário:");
+	r = scanf("%d", &bin);
+
+	if (r != 1)
+	{
+		printf("Não foi possível ler o número binário.\n");
+		printf("**Execução cancelada!**\n");
+		return 1;
+	}
+
+	printf("O valor binário informado é=%d.\n", bin);
+
+	dec = 0;
+	p = 1;
+	while (bin > 0)
+	{
+		d = bin % 10;
+		printf("[%d]\n", d);
+		if (d != 0 && d != 1)
+		{
+			printf("Dígito inválido. O número não é binário.\n");
+			printf("**Execução cancelada!**\n");
+			return 2;
+			
+		}
+		dec = dec + d * p;
+		p = p * 2;
+		bin = bin / 10;
+	}
+
+	printf("O equivalente em decimal é=%d.\n", dec);
+
+	return 0;
+}
