@@ -5,34 +5,37 @@ https://en.wikipedia.org/wiki/Hangman_%28game%29
 #include <string.h>
 #include <stdlib.h>
 
-int main() {
-    char secret[100];
-    char word[100];
-    unsigned len;
-    
-    printf("Jogo da Forca, (c) 2015\n");
+void create(char s[], char w[]);
+void clear();
 
-    printf("Informe a palavra secreta: ");
-    scanf("%s", secret);
-    
+void create(char s[], char w[]) {
+    int len = strlen(s);
+    int j;
+    for ( j = 0 ; j < len ; j++ )
+        w[ j ] = '-';
+    w[ len ] = '\0';
+}
+
+void clear() {    
     // FIXME: deve ficar no início da tela
     //int i;
     //for ( i = 0 ; i < 20 ; i++ )
     //    printf("\n");
-    
+}
 
-    printf("A palavra informada foi: [%s]\n", secret);
+int main() {
+    char secret[100];
+    char word[100];
+   
+    printf("Jogo da Forca, (c) 2015\n");
 
-    len = strlen(secret);
- 
-    printf("A palavra tem %d caracteres.\n", len);
+    printf("Informe a palavra secreta: ");
+    scanf("%s", secret);
 
-    int j;
-    for ( j = 0 ; j < len ; j++ )
-        word[ j ] = '-';
-    word[ len ] = '\0';
+    clear();    
+    create(secret, word);
 
-    printf("A palavra apresentada é: [%s]\n", word);
+    printf("[%s]\n", word);
 
     // TODO: completar o jogo
 
